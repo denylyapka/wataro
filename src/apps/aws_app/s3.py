@@ -46,10 +46,10 @@ class S3Client:
 
 async def get_name_and_file_upload(file_path):
     s3_client = S3Client(
-        access_key="d58e3bf117fb43c999c3503b753bcb94",
-        secret_key="865dc5415e654c8789c7e6877c13dace",
-        endpoint_url="https://s3.storage.selcloud.ru",
-        bucket_name="test-public-bucket-wa-meet-1"
+        access_key="access_key",
+        secret_key="secret_key",
+        endpoint_url="endpoint_url",
+        bucket_name="bucket_name"
     )
     print(file_path)
     await s3_client.upload_file(file_path)
@@ -58,13 +58,9 @@ async def get_name_and_file_upload(file_path):
 
 async def get_name_and_file_remove(file_path):
     s3_client = S3Client(
-        access_key="d58e3bf117fb43c999c3503b753bcb94",
-        secret_key="865dc5415e654c8789c7e6877c13dace",
-        endpoint_url="https://s3.storage.selcloud.ru",
-        bucket_name="test-public-bucket-wa-meet-1"
+        access_key="access_key",
+        secret_key="secret_key",
+        endpoint_url="endpoint_url",
+        bucket_name="bucket_name"
     )
     await s3_client.remove_file(file_path)
-
-
-if __name__ == '__main__':
-    asyncio.run(get_name_and_file_upload("tests/card.jpg"))
