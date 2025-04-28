@@ -1,0 +1,114 @@
+
+
+<script>
+
+    if (question !== "") {
+        const userDataButton = document.querySelector(".user-data-button")
+        userDataButton.disabled = true
+
+        const swipeHint = document.querySelector(".swipe-hint");
+        swipeHint.classList.add("swipe-hint-active")
+
+        let count = 0
+        if (Number('{{ id_deal }}') === 0) {
+            const userDataAddQuestion = document.querySelector(".user-data-add-question")
+            userDataAddQuestion.classList.add("user-data-answer-active")
+
+            // Определяем количество элементов для обработки
+            count = 1;
+
+        }
+        if (Number('{{ id_deal }}') === 1) {
+            const userDataAddQuestion = document.querySelector(".user-data-add-question")
+            userDataAddQuestion.classList.add("user-data-answer-active")
+
+            // Определяем количество элементов для обработки
+            count = 3;
+        }
+
+        // Используем цикл for для добавления класса ко всем элементам
+        for (let i = 1; i <= count; i++) {
+            const element = document.getElementById(`uda-${i}`);
+            if (element) { // Проверяем наличие элемента перед добавлением класса
+                element.classList.add("user-data-answer-active");
+            }
+        }
+        for (let i = 1; i <= count; i++) {
+            const element = document.getElementById(`section-uda-${i}`);
+            if (element) { // Проверяем наличие элемента перед добавлением класса
+                element.style.display="flex";
+            }
+        }
+    }
+
+
+</script>
+
+<div class="user-data-answers-container container">
+
+    <section class="child" id="section-uda-1" style="display: none;">
+        <div class="user-data-answer" id="uda-1">
+            <img src="" class="card_image ci-uda-1">
+            <h3 class="user-data-answer-h3 header-uda-1" style="font-weight: 600; font-size: 16px;"></h3>
+            <h3 class="user-data-answer-h3 user-data-answer-h3-load h3-uda-1">Загрузка контента . . .</h3>
+        </div>
+    </section>
+
+    <section class="child" id="section-uda-2" style="display: none;">
+        <div class="user-data-answer" id="uda-2">
+            <img src="" class="card_image ci-uda-2">
+            <h3 class="user-data-answer-h3 header-uda-2" style="font-weight: 600; font-size: 16px;"></h3>
+            <h3 class="user-data-answer-h3 user-data-answer-h3-load h3-uda-2">Загрузка контента . . .</h3>
+        </div>
+    </section>
+
+    <section class="child" id="section-uda-3" style="display: none;">
+        <div class="user-data-answer" id="uda-3">
+            <img src="" class="card_image ci-uda-3">
+            <h3 class="user-data-answer-h3 header-uda-3" style="font-weight: 600; font-size: 16px;"></h3>
+            <h3 class="user-data-answer-h3 user-data-answer-h3-load h3-uda-3">Загрузка контента . . .</h3>
+        </div>
+    </section>
+
+    <section class="child">
+        <div class="add-data">
+            <div class="user-data-add-question">
+                <h3 class="add-question">Дополнительные вопросы</h3>
+                <h3 class="add-question-1" id="add-question" style="text-align: left;"></h3>
+                <button class="user-data-button ud-b" onclick="get_add_answer()">Получить ответ</button>
+            </div>
+
+            <div class="user-data-answer add-data-answer" id="uda-add">
+                <img src="" class="card_image ci-uda-add">
+                <h3 class="user-data-answer-h3 header-uda-add" style="font-weight: 600; font-size: 16px;"></h3>
+                <h3 class="user-data-answer-h3 user-data-answer-h3-load h3-uda-add">Загрузка контента . . .</h3>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<style>
+
+    .container {
+        font-family: sans-serif;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: scroll;
+        display: flex;
+        width: 100vw;
+        z-index: 1;
+        align-items: flex-start;
+    }
+    .child {
+        min-width: 100%;
+        height: auto;
+        scroll-snap-align: start;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+</style>

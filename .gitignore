@@ -1,0 +1,11 @@
+# Файлы окружения
+*.env
+
+# Виртуальные среды Python
+.venv
+
+# Папка с тестами
+.tests
+
+# Конфигурационные файлы
+/src/apps/forecast_app/gigachat/gigachat_config.py

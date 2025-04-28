@@ -1,0 +1,588 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+<script>
+    function open_this(id_deal) {
+        console.log(id_deal)
+        const fD = document.querySelector(`.fd-${id_deal}`)
+        fD.classList.add("fd-active")
+        setTimeout(() => fD.classList.remove("fd-active"), 201)
+        
+        window.location.href=`/forecast/${id_deal}/{{tg_id}}`
+    }
+
+    function open_profile() {
+        const fD = document.querySelector(`.account-data-wrapper`)
+        fD.classList.add("fd-active")
+        setTimeout(() => fD.classList.remove("fd-active"), 201)
+
+        setTimeout(() => window.location.href="/profile/{{tg_id}}", 201)
+    }
+
+    function open_rating() {
+        const fD = document.querySelector(`.rating-data-wrapper`)
+        fD.classList.add("fd-active")
+        setTimeout(() => fD.classList.remove("fd-active"), 201)
+
+        setTimeout(() => window.location.href="/rating/{{tg_id}}", 201)
+    }
+</script>
+{% endblock %}
+
+
+{% block content %}
+<div id="particle-container"></div>
+<div class="start-gray-phone">
+    <input type="text" id="card-deal" class="card-deal" style="display: none">
+    <div class="start-black-phone-gradient-top"></div>
+
+    <div class="top-block">
+
+        <div class="account-data-wrapper">
+            <div class="account-data" onclick="open_profile()">
+                <div class="photo-account">
+                    <img class="photo" src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/Taro%20Easy%20bratz.jpg" width="40" height="40">
+                </div>
+                <div class="text-account">
+                    <h5 class="text-account-h3">Аккаунт</h3>
+                </div>
+            </div>
+        </div>
+
+       <div class="rating-data-wrapper">
+           <div class="rating-data" onclick="open_rating()">
+               <div class="text-rating">
+                   <h5 class="text-rating-h3">Рейтинг</h3>
+               </div>
+           </div>
+       </div>
+        
+    </div>
+    
+    <h3 class="usually-deals">Базовые расклады</h3>
+    <div class="general-forecasts-data-wrapper">
+        <div class="general-forecasts-data">
+            <div class="forecast-data" onclick="open_this(0)">
+                <div class="forecast f-1-card">
+                    <img class="forecast-image fd-0" src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/one_card.jpg">
+                    <div class="forecast-name">
+                        <h3 class="forecast-name-h3">Карта дня</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-data" onclick="open_this(1)">
+                <div class="forecast f-3-card">
+                    <img class="forecast-image fd-1" src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/three_cards.jpg">
+                    <div class="forecast-name">
+                        <h3 class="forecast-name-h3">3 карты</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-data" onclick="open_this(2)">
+                <div class="forecast f-10-card">
+                    <img class="forecast-image fd-2" src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/ten_cards.jpg">
+                    <div class="forecast-name">
+                        <h3 class="forecast-name-h3">10 карт</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <h3 class="usually-deals">Лунные расклады</h3>
+    <div class="general-forecasts-data-wrapper">
+        <div class="general-forecasts-data">
+            
+            <div class="forecast-data" onclick="open_this(40)">
+                <div class="forecast f-1-card">
+                    <img class="forecast-image fd-40" src="https://0d0b79ed-d1cd-4a70-8320-4f4a9644053d.selstorage.ru/moon-phases.jpg">
+                    <div class="forecast-name">
+                        <h3 class="forecast-name-h3">Фазы</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-data" onclick="open_this(41)">
+                <div class="forecast f-1-card">
+                    <img class="forecast-image fd-41" src="https://0d0b79ed-d1cd-4a70-8320-4f4a9644053d.selstorage.ru/moon-light.jpg">
+                    <div class="forecast-name">
+                        <h3 class="forecast-name-h3">Свет</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-data" onclick="open_this(42)">
+                <div class="forecast f-1-card">
+                    <img class="forecast-image fd-42" src="https://0d0b79ed-d1cd-4a70-8320-4f4a9644053d.selstorage.ru/moon-rituals.jpg">
+                    <div class="forecast-name">
+                        <h3 class="forecast-name-h3">Ритуалы</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <h3 class="usually-deals">Любовь и отношения</h3>
+    <div class="general-forecasts-data-wrapper">
+        <div class="general-forecasts-data">
+            <div class="forecast-data" onclick="open_this(10)">
+                <div class="forecast f-1-card">
+                    <img class="forecast-image fd-10" src="https://0d0b79ed-d1cd-4a70-8320-4f4a9644053d.selstorage.ru/twelve-months.jpg">
+                    <div class="forecast-name">
+                        <h3 class="forecast-name-h3">6 карт</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <h3 class="usually-deals">Карьера</h3>
+    <div class="general-forecasts-data-wrapper">
+        <div class="general-forecasts-data">
+            
+            <div class="forecast-data" onclick="open_this(20)">
+                <div class="forecast f-1-card">
+                    <img class="forecast-image fd-20" src="https://0d0b79ed-d1cd-4a70-8320-4f4a9644053d.selstorage.ru/voyage.jpg">
+                    <div class="forecast-name">
+                        <h3 class="forecast-name-h3">Твой путь</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <h3 class="usually-deals">Жизненая энергия</h3>
+    <div class="general-forecasts-data-wrapper">
+        <div class="general-forecasts-data">
+            
+            <div class="forecast-data" onclick="open_this(30)">
+                <div class="forecast f-1-card">
+                    <img class="forecast-image fd-30" src="https://0d0b79ed-d1cd-4a70-8320-4f4a9644053d.selstorage.ru/nature-cycles.jpg">
+                    <div class="forecast-name">
+                        <h3 class="forecast-name-h3">Поиск</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <h3 class="usually-deals">Другие продукты - скоро</h3>
+    <div class="prods-wrapper">
+        <div class="prods-container">
+            <div class="prod"><h3>Облако</h3></div>
+            <div class="prod"><h3>Знакомства</h3></div>
+        </div>
+    </div>
+    
+    <div class="text-on-page-start"></div>
+</div>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        overflow-x: hidden;
+    }
+    html {
+        background-color: #07091c;
+    }
+    /* Particle container. */
+    #particle-container {
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .start-gray-phone {
+        width: 100vw;
+        height: 100vh;
+        background-size: 80px 80px;
+        background-image: repeating-linear-gradient(0deg, #10102b, #10102b 1px, transparent 1px, transparent 40px),repeating-linear-gradient(-90deg,#10102b, #10102b 1px, transparent 1px, transparent 80px);
+        background-color: #07091c;
+        animation: sgp-appearance 250ms ease-in-out forwards;
+    }
+    @keyframes sgp-appearance {
+        
+    }
+
+    .start-black-phone-gradient-top {
+        background: linear-gradient(#000000, transparent);
+        width: 100vw;
+        height: 200px;
+        position: absolute;
+        z-index: 1;
+        opacity: .6;
+    }
+    .start-black-phone-gradient-bottom {
+        background: linear-gradient(transparent, #000000);
+        width: 100vw;
+        height: 200px;
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        opacity: .6;
+    }
+
+    .top-block {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .account-data-wrapper, .rating-data-wrapper {
+        position: relative;
+        z-index: 2;
+        display: block;
+
+        width: 45vw;
+        height: 60px;
+
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+
+        /* Эффект размытия */
+        backdrop-filter: blur(4px);
+        /* -webkit-backdrop-filter: blur(10px); */
+
+        box-shadow:
+        /* Нижний и правый эффект глубины */
+        inset -0.75px -0.5px rgba(255, 255, 255, 0.1),
+        /* Верхний и левый эффект глубины */
+        inset +0.75px +0.5px rgba(255, 255, 255, 0.025),
+        /* Shadow effect */
+        3px 2px 10px rgba(0, 0, 0, 0.25),
+        /* Короткий подповерхностный эффект */
+        inset 0px 0px 10px 5px rgba(255, 255, 255, 0.025),
+        /* Длинный подповерхностный эффект */
+        inset 0px 0px 40px 5px rgba(255, 255, 255, 0.025);
+
+        /* Скругляем углы */
+        border-radius: 20px;
+
+        /* Скрываем углы заголовка */
+        overflow: hidden;
+
+        background-color: #ffffff20;
+
+        z-index: 4;
+    }
+    .account-data {
+        background-color: transparent;
+        width: 45vw;
+        height: 45px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 10px 5px 10px;
+    }
+    .text-account {
+        margin-left: 10px;
+        color: white;
+    }
+    .text-account-h3 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    .photo {
+        border-radius: 25%;
+        object-fit: cover;
+    }
+
+    .rating-data-wrapper {
+        width: auto;
+        height: 35px;
+        padding: 0 20px;
+    }
+    .text-rating-h3 {
+        font-size: 14px;
+        margin-bottom: 2px;
+        text-align: center;
+        color: white;
+    }
+
+
+    .usually-deals {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 20px 0 0 20px;
+
+        position: relative;
+        z-index: 2;
+    }
+    .general-forecasts-data-wrapper {
+        /* -webkit-backdrop-filter: blur(10px); */
+
+        box-shadow:
+        /* Нижний и правый эффект глубины */
+        inset -0.75px -0.5px rgba(255, 255, 255, 0.025),
+        /* Верхний и левый эффект глубины */
+        inset +0.75px +0.5px rgba(255, 255, 255, 0.025),
+        /* Shadow effect */
+        3px 2px 10px rgba(0, 0, 0, 0.25),
+        /* Короткий подповерхностный эффект */
+        inset 0px 0px 10px 5px rgba(255, 255, 255, 0.025),
+        /* Длинный подповерхностный эффект */
+        inset 0px 0px 40px 5px rgba(255, 255, 255, 0.025);
+        
+        background-color: #ffffff20;
+        width: 102vw;
+        height: 160px;
+
+        position: relative;
+        z-index: 1;
+
+        border: 1px #fff solid;
+
+        margin: 10px 0 30px -2px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .general-forecasts-data {
+        width: 90%;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+
+        overflow-x: auto; /* Добавляем горизонтальную прокрутку */
+        white-space: nowrap; /* Запрещаем перенос строк */
+    }
+    .forecast-data {
+        width: 100px;
+        height: 130px;
+        display: inline-block; /* Располагаем элементы в ряд */
+        margin-right: 10px; /* Отступ между элементами */
+    }
+    .forecast {
+        background-color: #000000;
+        width: 100px;
+        height: 130px;
+        border-radius: 10px;
+
+        position: absolute;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .forecast-image {
+        height: 100%;
+        width: 100%s;
+        object-fit: cover;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    }
+    .forecast-name {
+        position: absolute;
+        bottom: 0;
+        z-index: 5;
+        width: 100%;
+        opacity: 1;
+        background-color: #000000b3;
+        height: 30px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .forecast-name-h3 {
+        color: white;
+        text-align: center;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    .prods-wrapper {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .prods-container {
+        width: 90vw;
+        background-color: #ffffff80;
+        border-radius: 15px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+    .prod {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .prod h3 {
+        font-size: 14px;
+    }
+
+
+    /* Анимации актива */
+    .fd-active {
+        position: relative;
+        z-index: 5;
+        animation: fd-anim 200ms ease-in-out forwards;
+    }
+    @keyframes fd-anim {
+        0% {scale: 1;}
+        10% {scale: 0.95;}
+        100% {scale: 1;}
+    }
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+    /* ---- particles.js config ---- */
+
+    particlesJS("particle-container", {
+    "particles": {
+        "number": {
+        "value": 50,
+        "density": {
+            "enable": true,
+            "value_area": 800
+        }
+        },
+        "color": {
+            "value": ["#ffffff"]
+        },
+        "shape": {
+        "type": "circle",
+        "stroke": {
+            "width": 0,
+            "color": "#000000"
+        },
+        "polygon": {
+            "nb_sides": 5
+        },
+        "image": {
+            "src": "img/github.svg",
+            "width": 100,
+            "height": 100
+        }
+        },
+        "opacity": {
+        "value": 0.5,
+        "random": false,
+        "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+        }
+        },
+        "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+                "enable": false,
+                "speed": 1,
+                "size_min": 0.1,
+                "sync": false
+            }
+        },
+        "line_linked": {
+            "enable": true,
+            "distance": 50,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 1,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+        "onhover": {
+            "enable": false,
+            "mode": "repulse"
+        },
+        "onclick": {
+            "enable": true,
+            "mode": "push"
+        },
+        "resize": true
+        },
+        "modes": {
+        "grab": {
+            "distance": 400,
+            "line_linked": {
+            "opacity": 1
+            }
+        },
+        "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+        },
+        "repulse": {
+            "distance": 200,
+            "duration": 0.4
+        },
+        "push": {
+            "particles_nb": 4
+        },
+        "remove": {
+            "particles_nb": 2
+        }
+        }
+    },
+    "retina_detect": true
+    });
+</script>
+<script>
+    async function onBackButtonPressed() {
+        window.location.href=`/start`
+    }
+    const backButton = window.Telegram.WebApp.BackButton;
+    backButton.show();
+    backButton.onClick(() => {
+        onBackButtonPressed();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,150 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="22">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="li" />
+            <item index="7" class="java.lang.String" itemvalue="a" />
+            <item index="8" class="java.lang.String" itemvalue="style" />
+            <item index="9" class="java.lang.String" itemvalue="div2" />
+            <item index="10" class="java.lang.String" itemvalue="p1" />
+            <item index="11" class="java.lang.String" itemvalue="p2" />
+            <item index="12" class="java.lang.String" itemvalue="h10" />
+            <item index="13" class="java.lang.String" itemvalue="a1" />
+            <item index="14" class="java.lang.String" itemvalue="h8" />
+            <item index="15" class="java.lang.String" itemvalue="h7" />
+            <item index="16" class="java.lang.String" itemvalue="h9" />
+            <item index="17" class="java.lang.String" itemvalue="a2" />
+            <item index="18" class="java.lang.String" itemvalue="a3" />
+            <item index="19" class="java.lang.String" itemvalue="h5" />
+            <item index="20" class="java.lang.String" itemvalue="h1" />
+            <item index="21" class="java.lang.String" itemvalue="input1" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyArgumentListInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyBroadExceptionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyGlobalUndefinedInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="47">
+            <item index="0" class="java.lang.String" itemvalue="pydantic" />
+            <item index="1" class="java.lang.String" itemvalue="tzlocal" />
+            <item index="2" class="java.lang.String" itemvalue="six" />
+            <item index="3" class="java.lang.String" itemvalue="async-timeout" />
+            <item index="4" class="java.lang.String" itemvalue="Babel" />
+            <item index="5" class="java.lang.String" itemvalue="magic-filter" />
+            <item index="6" class="java.lang.String" itemvalue="aiofiles" />
+            <item index="7" class="java.lang.String" itemvalue="aiogram" />
+            <item index="8" class="java.lang.String" itemvalue="python-dotenv" />
+            <item index="9" class="java.lang.String" itemvalue="tzdata" />
+            <item index="10" class="java.lang.String" itemvalue="APScheduler" />
+            <item index="11" class="java.lang.String" itemvalue="redis" />
+            <item index="12" class="java.lang.String" itemvalue="attrs" />
+            <item index="13" class="java.lang.String" itemvalue="frozenlist" />
+            <item index="14" class="java.lang.String" itemvalue="certifi" />
+            <item index="15" class="java.lang.String" itemvalue="typing_extensions" />
+            <item index="16" class="java.lang.String" itemvalue="charset-normalizer" />
+            <item index="17" class="java.lang.String" itemvalue="aiohttp" />
+            <item index="18" class="java.lang.String" itemvalue="multidict" />
+            <item index="19" class="java.lang.String" itemvalue="yarl" />
+            <item index="20" class="java.lang.String" itemvalue="pytz" />
+            <item index="21" class="java.lang.String" itemvalue="aiosignal" />
+            <item index="22" class="java.lang.String" itemvalue="idna" />
+            <item index="23" class="java.lang.String" itemvalue="pydantic_core" />
+            <item index="24" class="java.lang.String" itemvalue="tortoise-orm" />
+            <item index="25" class="java.lang.String" itemvalue="iso8601" />
+            <item index="26" class="java.lang.String" itemvalue="jinja2" />
+            <item index="27" class="java.lang.String" itemvalue="fastapi" />
+            <item index="28" class="java.lang.String" itemvalue="starlette" />
+            <item index="29" class="java.lang.String" itemvalue="SQLAlchemy" />
+            <item index="30" class="java.lang.String" itemvalue="requests" />
+            <item index="31" class="java.lang.String" itemvalue="uvicorn" />
+            <item index="32" class="java.lang.String" itemvalue="python-multipart" />
+            <item index="33" class="java.lang.String" itemvalue="exceptiongroup" />
+            <item index="34" class="java.lang.String" itemvalue="prodamuspy" />
+            <item index="35" class="java.lang.String" itemvalue="propcache" />
+            <item index="36" class="java.lang.String" itemvalue="aiohappyeyeballs" />
+            <item index="37" class="java.lang.String" itemvalue="h11" />
+            <item index="38" class="java.lang.String" itemvalue="MarkupSafe" />
+            <item index="39" class="java.lang.String" itemvalue="click" />
+            <item index="40" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="41" class="java.lang.String" itemvalue="anyio" />
+            <item index="42" class="java.lang.String" itemvalue="psycopg2" />
+            <item index="43" class="java.lang.String" itemvalue="urllib3" />
+            <item index="44" class="java.lang.String" itemvalue="annotated-types" />
+            <item index="45" class="java.lang.String" itemvalue="greenlet" />
+            <item index="46" class="java.lang.String" itemvalue="sniffio" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E302" />
+          <option value="E501" />
+          <option value="E305" />
+          <option value="E116" />
+          <option value="W292" />
+          <option value="E701" />
+          <option value="E127" />
+          <option value="E402" />
+          <option value="E306" />
+          <option value="E722" />
+          <option value="E111" />
+          <option value="E401" />
+          <option value="E303" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+          <option value="N806" />
+          <option value="N814" />
+          <option value="N802" />
+          <option value="N803" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="id" />
+          <option value="help" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyTypeCheckerInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="telebot.F" />
+          <option value="telebot.*" />
+          <option value="main.not_polling" />
+          <option value="aiogram.dispatcher.filters.state.State.__await__" />
+          <option value="db.models.User.__getitem__" />
+          <option value="app.ok_volma" />
+          <option value="str.__sub__" />
+          <option value="main.st_mtime" />
+          <option value="pathlib.Path.__add__" />
+          <option value="bot.handlers.user.info.info.aiohttp_server" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

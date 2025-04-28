@@ -1,0 +1,679 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+<script>
+    function choice_this(type) {
+        const cardDeal = document.getElementById("card-deal");
+        cardDeal.value = type
+        const oneChoiceCardDeal = document.querySelector(".one-choice-card-deal")
+        oneChoiceCardDeal.classList.add("choice-this")
+    }
+    function check_params() {
+        const question = document.getElementById("question").value;
+        const cardDeal = document.getElementById("card-deal").value;
+        async function sendData(question, cardDeal) {
+            let formData = new FormData();
+            formData.append("tg_id", '{{ tg_id }}')
+            formData.append("question", question)
+            formData.append("card_deal", cardDeal)
+            await fetch("/start_card_deal", {
+                method: "POST",
+                body: formData,
+            });
+        }
+        if (question.length !== 0 && cardDeal.length !== 0 && tgId.length !== 0) {
+            sendData(question, cardDeal)
+            window.location.href='/start_card_deal_get/{{ tg_id }}'
+
+            // сюда
+
+        } else {
+            window.location.href='/main_menu/{{ tg_id }}'
+        }
+    }
+    function change_size() {
+        const sexyAdvert = document.querySelector(".sexy-advert");
+        sexyAdvert.classList.add("resize-advert")
+        setTimeout(() => sexyAdvert.classList.remove("resize-advert"), 251)
+        window.location.href="https://t.me/mary_taroeasy"
+    }
+
+    function open_profile() {
+        window.location.href='/profile/{{ tg_id }}'
+    }
+
+    function is_active(cards) {
+        if (Number(cards) === 1) {
+            const cd1 = document.getElementById("cd-1");
+            cd1.classList.remove("deactive")
+            cd1.classList.add("active")
+
+            const cd3 = document.getElementById("cd-3");
+            cd3.classList.add("deactive")
+            cd3.classList.remove("active")
+            const cd10 = document.getElementById("cd-10");
+            cd10.classList.add("deactive")
+            cd10.classList.remove("active")
+        }
+        if (Number(cards) === 3) {
+            const cd3 = document.getElementById("cd-3");
+            cd3.classList.remove("deactive")
+            cd3.classList.add("active")
+
+            const cd1 = document.getElementById("cd-1");
+            cd1.classList.add("deactive")
+            cd1.classList.remove("active")
+            const cd10 = document.getElementById("cd-10");
+            cd10.classList.add("deactive")
+            cd10.classList.remove("active")
+        }
+        if (Number(cards) === 10) {
+            const cd10 = document.getElementById("cd-10");
+            cd10.classList.remove("deactive")
+            cd10.classList.add("active")
+
+            const cd3 = document.getElementById("cd-3");
+            cd3.classList.add("deactive")
+            cd3.classList.remove("active")
+            const cd1 = document.getElementById("cd-1");
+            cd1.classList.add("deactive")
+            cd1.classList.remove("active")
+        }
+    }
+
+</script>
+{% endblock %}
+
+
+{% block content %}
+<div class="loader">
+    <svg class="star-loader" width="100" height="101" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M75 51C61.1929 51 50 39.8071 50 26V0L51.0612 25.9995C51.5917 38.9977 62.0019 49.4167 74.9996 49.9583L100 51H75Z" fill="#D9D9D9"/>
+        <path d="M75 51C61.1929 51 50 62.1929 50 76V101L51.0425 75.9801C51.5837 62.9905 61.9905 52.5837 74.9801 52.0425L100 51H75Z" fill="#D9D9D9"/>
+        <path d="M25 51C38.8071 51 50 39.8071 50 26V1L48.9575 26.0199C48.4163 39.0095 38.0095 49.4163 25.0199 49.9575L0 51H25Z" fill="#D9D9D9"/>
+        <path d="M25 51C38.8071 51 50 62.1929 50 76V100L48.977 75.9588C48.4246 62.9782 38.0214 52.5842 25.0403 52.0433L0 51H25Z" fill="#D9D9D9"/>
+        <rect x="22.5" y="24.5" width="54" height="54" rx="27" stroke="white"/>
+    </svg>
+    <h3 class="loader-h3">Шепчем в колоду...</h3>
+
+    <div class="sexy-advert" onclick="change_size()">
+        <div class="photo-advert-wrapper">
+            <div class="photo-advert"></div>
+        </div>
+        <div class="text-advert-wrapper">
+            <div class="text-advert">
+                <div class="top-text-advert">
+                    <h3 class="text-advert-h3">Здесь могла бы быть ваша реклама</h3>
+                    <h3 class="text-advert-link">@hello</h3>
+                </div>
+                <h5 class="text-advert-descr">Пишите и заказывайте</h5>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="particle-container"></div>
+<div class="start-gray-phone">
+    <input type="text" id="card-deal" class="card-deal" style="display: none">
+    <div class="start-black-phone-gradient-top"></div>
+
+    <div class="buttons-top">
+        <svg class="profile-button" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="open_profile()">
+            <path d="M15.1499 15.975C15.0624 15.9625 14.9499 15.9625 14.8499 15.975C12.6499 15.9 10.8999 14.1 10.8999 11.8875C10.8999 9.62498 12.7249 7.78748 14.9999 7.78748C17.2624 7.78748 19.0999 9.62498 19.0999 11.8875C19.0874 14.1 17.3499 15.9 15.1499 15.975Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M23.4249 24.2251C21.1999 26.2626 18.2499 27.5001 14.9999 27.5001C11.75 27.5001 8.79995 26.2626 6.57495 24.2251C6.69995 23.0501 7.44995 21.9001 8.78745 21.0001C12.2125 18.7251 17.8124 18.7251 21.2124 21.0001C22.5499 21.9001 23.2999 23.0501 23.4249 24.2251Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15 27.5C21.9035 27.5 27.5 21.9035 27.5 15C27.5 8.09644 21.9035 2.5 15 2.5C8.09644 2.5 2.5 8.09644 2.5 15C2.5 21.9035 8.09644 27.5 15 27.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>            
+    </div>
+    
+    <div class="text-on-page-start">
+        <h3 class="text-on-page-start-h3">Задайте вопрос и выберете расклад</h3>
+        <input type="text" id="question" placeholder="Ваш вопрос">
+        <div class="wrapper-questions">
+
+            <div class="card-deal active" id="cd-1" onclick="is_active(1)">
+                <img src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/one_card.jpg" alt="" class="image_card">
+
+                <div class="card-deal-absolut">
+
+                    <div class="card-deal-text">
+                        <h3 class="name_card_deal">Карта дня</h3>
+                        <p class="desc_card_deal">Таро "Карта дня" - расклад из одной карты. Быстрый способ получить ответ.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-deal deactive" id="cd-3" onclick="is_active(3)">
+                <img src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/three_cards.jpg" alt="" class="image_card">
+
+                <div class="card-deal-absolut">
+
+                    <div class="card-deal-text">
+                        <h3 class="name_card_deal">Триплет</h3>
+                        <p class="desc_card_deal">Таро "Триплет" - расклад на 3 карты, помогающий глубже анализировать ситуацию.</p>
+                    </div>
+                        
+                </div>
+
+            </div>
+
+            <div class="card-deal deactive" id="cd-10" onclick="is_active(10)">
+                <img src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/ten_cards.jpg" alt="" class="image_card">
+
+                <div class="card-deal-absolut">
+
+                    <div class="card-deal-text">
+                        <h3 class="name_card_deal">Кельтский крест</h3>
+                        <p class="desc_card_deal">Таро "Кельтский крест"- расклад на 10 карт. Помогает разобраться в сложных ситуациях.</p>
+                    </div>
+                            
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        overflow: hidden;
+    }
+    /* Particle container. */
+    #particle-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .buttons-top {
+        position: relative;
+        z-index: 10;
+        margin-bottom: -30px;
+    }
+    .profile-button {
+        float: right;
+        margin: 10px 10px 0 0;
+    }
+    .sexy-advert {
+        background: #fff;
+        display: block;
+        margin: 10px auto 0 auto;
+        width: 80%;
+        min-height: 100px;
+        max-height: 200px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, .3);
+        display: flex;
+        flex-direction: row;
+        opacity: 1;
+        padding: 1% 0;
+    }
+    .photo-advert {
+        width: 42px;
+        height: 42px;
+        background-color: #D9D9D9;
+        border-radius: 12px;
+        margin: 15px 20px 0 15px;
+    }
+    .top-text-advert {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+    }
+    .text-advert-h3 {
+        font-size: 14px;
+        margin-top: 20px;
+        width: 80%;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .text-advert-link {
+        font-size: 14px;
+        margin-top: 20px;
+        color: #878787;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .text-advert-descr {
+        margin-top: 10px;
+        margin-left: 2px;
+        color: #1E88E9;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .resize-advert {
+        animation: resize-advert-anim 250ms ease-in-out;
+    }
+    @keyframes resize-advert-anim {
+        0% {scale: 1;}
+        30% {scale: 0.97;}
+        100% {scale: 1;}
+    }
+
+    .loader {
+        background-color: rgb(0, 0, 0, 0.5);
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        animation: loader-appearance 300ms ease-in-out forwards;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    @keyframes loader-appearance {
+        100% {
+            opacity: 1;
+        }
+    }
+    .star-loader {
+        width: 100vw;
+        height: 100vh;
+        opacity: 1;
+        z-index: 11;
+        width: 50px;
+        height: 50px;
+        opacity: 1;
+        animation: scalable-loader-stars 1000ms ease-in-out infinite;
+    }
+    @keyframes scalable-loader-stars {
+        0% {
+            scale: 0.5;
+            rotate: 0;
+        }
+        60% {
+            rotate: -360deg;
+            scale: 1.3;
+        }
+        100% {
+            scale: 0.5;
+        }
+    }
+    .loader-h3 {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 5px;
+        text-shadow: rgba(255, 255, 255, .4) 0px 0px 10px;
+        opacity: 0.9;
+    }
+
+    .start-gray-phone {
+        width: 100vw;
+        height: 100vh;
+        background-size: 80px 80px;
+        background-image: repeating-linear-gradient(0deg, #10102b, #10102b 1px, transparent 1px, transparent 40px),repeating-linear-gradient(-90deg,#10102b, #10102b 1px, transparent 1px, transparent 80px);
+        background-color: #07091c;
+    }
+    .stars-bg {
+        position: absolute;
+        left: -500px;
+        top: -200px;
+        animation: scalable-bg-stars 60s ease infinite;
+    }
+    @keyframes scalable-bg-stars {
+        0% {
+            scale: 1;
+            top: -200px;
+        }
+        50% {
+            top: -250px;
+            scale: .5
+        }
+        100% {
+            scale: 1;
+        }
+    }
+    .start-black-phone-gradient-top {
+        background: linear-gradient(#000000, transparent);
+        width: 100vw;
+        height: 200px;
+        position: absolute;
+        z-index: 1;
+        opacity: .6;
+    }
+    .start-black-phone-gradient-bottom {
+        background: linear-gradient(transparent, #000000);
+        width: 100vw;
+        height: 200px;
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        opacity: .6;
+    }
+    .text-on-page-start {
+        width: 100vw;
+        height: 100vh;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        position: absolute;
+        top: auto;
+        bottom: auto;
+        min-width: 0;
+    }
+    .text-on-page-start-h3 {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        font-size: 34px;
+        font-weight: 500;
+        width: 85%;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 34px;
+        text-shadow: rgba(255, 255, 255, .4) 0px 0px 10px;
+    }
+    .text-on-page-start input {
+        width: 80%;
+        border-radius: 12px;
+        height: 44px;
+        background-color: #fff;
+        font-size: 18px;
+        border: none;
+        text-indent: 10px;
+        z-index: 2;
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, .3);
+    }
+
+
+    .wrapper-questions {
+        width: 100%;
+        height: 75vh;
+        background-color: rgb(255, 255, 255, 0.2);
+        margin: 5% 0 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px 20px 0 0;
+        gap: 12px;
+        padding-bottom: 20px;
+        position: relative;
+        animation: wrapper-questions-appear 900ms ease-out forwards;
+    }
+    @keyframes wrapper-questions-appear {
+        0% {
+            top: 500px;
+        }
+        100% {
+            top: 0;
+
+        }
+    }
+    .card-deal {
+        height: 140px;
+        background-color: transparent;
+        width: 90%;
+        border-radius: 15px;
+        border: #D9D9D9 1px solid;
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .image_card {
+        width: 100%;
+        object-fit: cover;
+        position: inherit;
+        margin: -76% 0;
+        filter: blur(3px);
+    }
+    .card-deal-absolut {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+    .card-deal-text {
+        filter: blur(0);
+        background-color: #fff;
+        width: 65%;
+        min-height: 50px;
+        opacity: 0.95;
+        border-radius: 10px;
+        padding: 15px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    }
+    /* .indicator-choice {
+        width: 50px;
+        height: 30px;
+        border-radius: 20px;
+        background-color: #899087;
+        border: #fff 3px solid;
+    } */
+
+    .name_card_deal {
+        color: rgb(0, 0, 0);
+        font-size: 18px;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+    }
+    .desc_card_deal {
+        color: rgb(124, 124, 124);
+        font-size: 14px;
+        font-family: 'Inter', sans-serif;
+        width: 80%;
+        text-align: center;
+    }
+
+    .passive {
+        
+    }
+
+    .active {
+        animation: opacity2one 250ms ease-in-out forwards;
+    }
+    @keyframes opacity2one {
+        60% {
+            scale: 1.05;
+        }
+        100% {
+            scale: 1.02;
+        }
+    }
+    .deactive {
+        animation: opacity2zero 250ms ease-in-out forwards;
+    }
+    @keyframes opacity2zero {
+        60% {
+            scale: 1.00;
+        }
+        100% {
+            scale: 1.00;
+            opacity: 0.4;
+        }
+    }
+
+    .container {
+        animation: start-appearance 500ms ease-in-out forwards 250ms;
+    }
+    @keyframes start-appearance {
+        0% {
+            left: 0;
+        }
+        70% {
+            left: -50px;
+        }
+        100% {
+            left: 0;
+        }
+    }
+</style>
+
+<script>
+
+    async function send_data() {
+        let questionInputValue = document.getElementById("question").value;
+        let activeCardDeal = document.querySelector(".active").id;
+
+        let formData = new FormData();
+        formData.append("tg_id", '{{ tg_id }}')
+        formData.append("question", questionInputValue)
+        await fetch("/forecast/add_question", {
+            method: "POST",
+            body: formData,
+        });
+        
+        if (questionInputValue !== "") {
+
+            let loader = document.querySelector(".loader");
+            loader.style.display = "flex";
+
+            if (activeCardDeal == "cd-1") {
+                window.location.href='/forecast/one/{{ tg_id }}'
+            }
+            if (activeCardDeal == "cd-3") {
+                window.location.href='/forecast/three/{{ tg_id }}'
+            }
+            if (activeCardDeal == "cd-10") {
+                window.location.href='/forecast/ten/{{ tg_id }}'
+            }
+        }
+    }
+
+
+    let tg_ = window.Telegram.WebApp; //получаем объект webapp телеграма
+
+    tg_.MainButton.text = "Узнать, что говорят карты";
+    tg_.MainButton.color = "#282A4A";
+    tg_.MainButton.isVisible = true;
+    tg_.MainButton.isActive = true;
+    tg_.ready()
+    tg_.isClosingConfirmationEnabled = true;
+    Telegram.WebApp.onEvent('mainButtonClicked', function(){
+        send_data();
+    });
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+    /* ---- particles.js config ---- */
+
+    particlesJS("particle-container", {
+    "particles": {
+        "number": {
+        "value": 50,
+        "density": {
+            "enable": true,
+            "value_area": 800
+        }
+        },
+        "color": {
+            "value": ["#ffffff"]
+        },
+        "shape": {
+        "type": "circle",
+        "stroke": {
+            "width": 0,
+            "color": "#000000"
+        },
+        "polygon": {
+            "nb_sides": 5
+        },
+        "image": {
+            "src": "img/github.svg",
+            "width": 100,
+            "height": 100
+        }
+        },
+        "opacity": {
+        "value": 0.5,
+        "random": false,
+        "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+        }
+        },
+        "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+                "enable": false,
+                "speed": 1,
+                "size_min": 0.1,
+                "sync": false
+            }
+        },
+        "line_linked": {
+            "enable": true,
+            "distance": 50,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 1,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+        "onhover": {
+            "enable": false,
+            "mode": "repulse"
+        },
+        "onclick": {
+            "enable": true,
+            "mode": "push"
+        },
+        "resize": true
+        },
+        "modes": {
+        "grab": {
+            "distance": 400,
+            "line_linked": {
+            "opacity": 1
+            }
+        },
+        "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+        },
+        "repulse": {
+            "distance": 200,
+            "duration": 0.4
+        },
+        "push": {
+            "particles_nb": 4
+        },
+        "remove": {
+            "particles_nb": 2
+        }
+        }
+    },
+    "retina_detect": true
+    });
+</script>
+{% endblock %}

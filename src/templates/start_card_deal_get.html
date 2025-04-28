@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+<div class="predictable-phone">
+    <div class="Start-block">
+        <img src="https://st.kp.yandex.net/im/kadr/3/2/6/kinopoisk.ru-Johnny-Sins-3269020.jpg" alt="bg-photo" class="bg-photo">
+    </div>
+    {% for prediction in predictions %}
+        <div class="one-card">
+            <img src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/card.jpg" alt="one-card" class="one-card">
+        </div>
+        <div class="one-card-back">
+            <img src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/back-card.jpg" alt="one-card-back" class="one-card-back">
+        </div>
+        <div class="text">
+            <h1 class="text-h1">{{ prediction["prediction_card"] }}</h1>
+            <p class="text-p">{{ prediction["prediction_answer"] }}</p>
+        </div>
+    {% endfor %}
+</div>
+<style>
+    @font-face {
+    font-family: "FuturisLightC";
+    src: local('☺'),             /* IE trick */
+        url('../images/FUTURILC.TTF') format('truetype'), /* Opera, Safari */
+        url('../images/FUTURILC.svg#font') format('svg'); /* iOS */
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        overflow: hidden;
+    }
+    .Start-block {
+        width: 100%;
+        height: 100%;
+    }
+    IMG.bg-photo {
+        height: 100%;
+        object-fit: cover;
+        filter: blur(4px);
+    }
+    IMG.one-card-back {
+        width: 160px;
+        object-fit: cover;
+        position: absolute;
+        z-index: 1;
+        border-radius: 18px;
+        top: 150px;
+        left: -160px;
+        animation: anim-from-left-to-center-back 500ms forwards, anim-scale-up-back 500ms forwards 500ms, anim-scale-down-right 500ms forwards 5000ms;
+    }
+    IMG.one-card {
+        width: 160px;
+        object-fit: cover;
+        position: absolute;
+        z-index: 2;
+        border-radius: 18px;
+        top: 150px;
+        left: -160px;
+        opacity: 0;
+        animation: anim-from-left-to-center 500ms forwards, anim-scale-up 500ms forwards 500ms, anim-scale-down 500ms forwards 1300ms, anim-scale-down-right 500ms forwards 5000ms;
+    }
+    @keyframes anim-from-left-to-center {
+        0% {
+            left: -160px;
+            opacity: 0;
+        }
+        100% {
+            left: 38%;
+            opacity: 0;
+        }
+    }
+    @keyframes anim-scale-up {
+        0% {
+            scale: 1;
+            transform: rotateY(0deg);
+            opacity: 0;
+        }
+        100% {
+            scale: 1.4;
+            transform: rotateY(180deg);
+            opacity: 1;
+        }
+    }
+    @keyframes anim-scale-down {
+        0% {
+            scale: 1.4;
+            top: 150px;
+        }
+        100% {
+            scale: 1.2;
+            top: 80px;
+        }
+    }
+    @keyframes anim-from-left-to-center-back {
+        0% {
+            left: -160px;
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        100% {
+            left: 38%;
+            opacity: 1;
+        }
+    }
+    @keyframes anim-scale-up-back {
+        0% {
+            scale: 1;
+            transform: rotateY(0deg);
+            opacity: 1;
+        }
+        100% {
+            scale: 1.4;
+            transform: rotateY(180deg);
+            opacity: 0;
+        }
+    }
+    @keyframes anim-scale-down-right {
+        0% {
+            left: 38%;
+            scale: 1.2;
+        }
+        100% {
+            left: 110%;
+            scale: 1;
+        }
+    }
+    .text {
+        position: relative;
+        top: 0;
+        animation: text-up 500ms forwards 1300ms, text-down 500ms forwards 5000ms;
+    }
+    .text-h1 {
+        font-family: Inter, sans-serif;
+        position: inherit;
+        line-height: 35px;
+        width: 80%;
+        margin: 0 auto;
+        z-index: 2;
+        text-align: center;
+    }
+    .text-p {
+        font-family: Inter, sans-serif;
+        font-size: 20px;
+        position: inherit;
+        line-height: 35px;
+        width: 80%;
+        margin: 0 auto;
+        z-index: 2;
+        text-align: center;
+    }
+    @keyframes text-up {
+        0% {
+            position: relative;
+            top: 0;
+        }
+        100% {
+            position: relative;
+            top: -950px;
+        }
+    }
+    @keyframes text-down {
+        0% {
+            position: relative;
+            top: -950px;
+        }
+        100% {
+            position: relative;
+            top: 0;
+        }
+    }
+</style>
+{% endblock %}

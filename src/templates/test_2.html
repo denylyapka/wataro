@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiper Slider</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.6/swiper-bundle.min.css">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        html {
+            overflow-x: hidden;
+        }
+        body {
+            overflow-x: hidden;
+
+        }
+
+        .swiper-container {
+            width: 100vw;
+            height: 300px;
+            margin-left: 10px;
+            overflow: hidden;
+        }
+        .swiper-wrapper {
+            height: 300px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            background-color: #F3F4F5;
+            padding-top: 20px;
+            min-height: calc(100% - 20px);
+            width: 307px;
+        }
+
+        .swiper-slide-active {
+            color: black
+        }
+        .swiper-slide-next,
+        .swiper-slide-prev {
+            color: rgba(99, 99, 99, 0.755)
+        }
+
+
+        @keyframes sbn-anim {
+            0% {padding-left: 5px;}
+            50% {padding-left: 6px;}
+            100% {padding-left: 5px;}
+        }
+
+        .square-on-corner {
+            width: 28px;
+            height: 28px;
+            background-color: white;
+            position: absolute;
+            rotate: 45deg;
+            left: -18.5px;
+            top: 39px;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+        }
+        .top {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        .arrow {opacity: 0.5; margin-left: 5px}
+        .number h1 {
+            font-weight: 900;
+            font-size: 60px;
+            line-height: 60px;
+            color: #2f7dfb;
+            margin-left: 10px;
+        }
+        .texts {
+            width: 90%;
+        }
+        .texts h1 {
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 26px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .texts p {
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 26px;
+            text-align: left;
+        }
+
+        .swiper-button-next-cont {
+            position: absolute;
+            right: 0px;
+            top: 0;
+            width: 39px;
+            height: 49.3%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.50), rgb(255, 255, 255));
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="square-on-corner"></div>
+                <div class="top">
+                    <div class="icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00146484" width="60" height="60" rx="30" fill="#2F7DFB"/>
+                            <path d="M27.5015 42.5C33.0243 42.5 37.5015 38.0228 37.5015 32.5C37.5015 26.9772 33.0243 22.5 27.5015 22.5C21.9786 22.5 17.5015 26.9772 17.5015 32.5C17.5015 34.0444 17.8516 35.507 18.4767 36.8128C18.6916 37.2616 18.767 37.7701 18.6384 38.2508L18.2284 39.7833C17.9052 40.9912 19.0102 42.0963 20.2182 41.7731L21.7507 41.3631C22.2314 41.2344 22.7399 41.3099 23.1887 41.5247C24.4945 42.1499 25.9571 42.5 27.5015 42.5Z" stroke="white" stroke-width="1.5"/>
+                            <path d="M37.5015 33.1273C37.5846 33.0926 37.667 33.0567 37.7486 33.0193C38.2012 32.8126 38.709 32.7353 39.1897 32.8639L39.7848 33.0231C40.9927 33.3463 42.0978 32.2412 41.7746 31.0333L41.6154 30.4383C41.4867 29.9576 41.5641 29.4498 41.7708 28.9972C42.24 27.97 42.5015 26.828 42.5015 25.625C42.5015 21.1377 38.8638 17.5 34.3765 17.5C30.9986 17.5 28.1022 19.5612 26.8765 22.4945" stroke="white" stroke-width="1.5"/>
+                            <path d="M23.1492 32.5H23.1604M27.5126 32.5H27.5238M31.8763 32.5H31.8876" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="arrow">
+                        <svg width="119" height="10" viewBox="0 0 119 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00146484" y="4.25" width="118" height="1.5" rx="0.75" fill="#26303E"/>
+                            <path d="M114.001 1L118.001 5L114.001 9" stroke="#26303E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="number">
+                        <h1>01</h1>
+                    </div>
+                </div>
+                <div class="texts">
+                    <h1>Бесплатная консультация</h1>
+                    <p>Консультацию можно получить онлайн по телефону или при личной встрече в нашем уютном офисе в центре Москвы.</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top">
+                    <div class="square-on-corner"></div>
+                    <div class="icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00195312" width="60" height="60" rx="30" fill="#2F7DFB"/>
+                            <path d="M36.697 25.7089L37.199 25.2069C38.0309 24.375 39.3796 24.375 40.2114 25.2069C41.0432 26.0387 41.0432 27.3874 40.2114 28.2192L39.7093 28.7213M36.697 25.7089C36.697 25.7089 36.7597 26.7758 37.7011 27.7172C38.6425 28.6585 39.7093 28.7213 39.7093 28.7213M36.697 25.7089L32.0813 30.3246C31.7687 30.6372 31.6124 30.7936 31.4779 30.9659C31.3194 31.1692 31.1834 31.3892 31.0725 31.622C30.9784 31.8193 30.9085 32.029 30.7687 32.4485L30.3211 33.7913L30.1763 34.2258M39.7093 28.7213L35.0937 33.337C34.781 33.6496 34.6247 33.8059 34.4524 33.9404C34.2491 34.0989 34.0291 34.2349 33.7963 34.3458C33.599 34.4399 33.3893 34.5098 32.9698 34.6496L31.627 35.0972L31.1925 35.242M31.1925 35.242L30.758 35.3868C30.5516 35.4556 30.3241 35.4019 30.1702 35.2481C30.0164 35.0942 29.9626 34.8667 30.0314 34.6603L30.1763 34.2258M31.1925 35.242L30.1763 34.2258" stroke="white" stroke-width="1.5"/>
+                            <path d="M25.668 31.083H28.3763" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M25.668 26.75H32.7096" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M25.668 35.417H27.293" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M38.4827 20.4362C37.2135 19.167 35.1708 19.167 31.0853 19.167H28.9186C24.8331 19.167 22.7904 19.167 21.5212 20.4362C20.252 21.7054 20.252 23.7482 20.252 27.8337V32.167C20.252 36.2525 20.252 38.2952 21.5212 39.5645C22.7904 40.8337 24.8331 40.8337 28.9186 40.8337H31.0853C35.1708 40.8337 37.2135 40.8337 38.4827 39.5645C39.5044 38.5428 39.7037 37.0199 39.7425 34.3337" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="arrow">
+                        <svg width="119" height="10" viewBox="0 0 119 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00146484" y="4.25" width="118" height="1.5" rx="0.75" fill="#26303E"/>
+                            <path d="M114.001 1L118.001 5L114.001 9" stroke="#26303E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="number">
+                        <h1>02</h1>
+                    </div>
+                </div>
+                <div class="texts">
+                    <h1>Согласование индивидуальных условий и подписание Договора</h1>
+                    <p>Все условия фиксируются в договоре с юридическим лицом, зарегистрированным на территории РФ</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top">
+                    <div class="square-on-corner"></div>
+                    <div class="icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00195312" width="60" height="60" rx="30" fill="#2F7DFB"/>
+                            <path d="M40.3915 30.8091L41.0385 28.3943C41.7938 25.5754 42.1715 24.166 41.8871 22.9463C41.6625 21.9832 41.1574 21.1084 40.4357 20.4323C39.5216 19.5762 38.1121 19.1985 35.2933 18.4432C32.4744 17.6879 31.065 17.3103 29.8453 17.5947C28.8822 17.8192 28.0074 18.3243 27.3313 19.0461C26.5983 19.8287 26.2161 20.9745 25.6472 23.057C25.5517 23.4068 25.4509 23.7829 25.3423 24.1882L25.3422 24.1885L24.6952 26.6033C23.9399 29.4221 23.5622 30.8316 23.8466 32.0513C24.0712 33.0144 24.5763 33.8892 25.298 34.5652C26.2121 35.4214 27.6216 35.799 30.4404 36.5543L30.4404 36.5543L30.4404 36.5543C32.9812 37.2351 34.3769 37.6091 35.5207 37.468C35.6459 37.4526 35.7681 37.431 35.8884 37.4029C36.8515 37.1783 37.7263 36.6732 38.4024 35.9515C39.2585 35.0374 39.6362 33.6279 40.3915 30.8091Z" stroke="white" stroke-width="1.5"/>
+                            <path d="M35.5207 37.4676C35.2601 38.2657 34.8018 38.9877 34.1857 39.5648C33.2716 40.421 31.8621 40.7986 29.0433 41.554C26.2244 42.3093 24.815 42.6869 23.5953 42.4025C22.6322 42.178 21.7574 41.6729 21.0813 40.9511C20.2252 40.037 19.8475 38.6276 19.0922 35.8087L18.4452 33.3939C17.6899 30.575 17.3122 29.1656 17.5966 27.9459C17.8212 26.9828 18.3263 26.108 19.048 25.432C19.9621 24.5758 21.3716 24.1982 24.1904 23.4428C24.7237 23.3 25.2066 23.1706 25.6472 23.0566" stroke="white" stroke-width="1.5"/>
+                            <path d="M29.7227 27.5L35.7597 29.1176" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M28.752 31.1221L32.3742 32.0926" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="arrow">
+                        <svg width="119" height="10" viewBox="0 0 119 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00146484" y="4.25" width="118" height="1.5" rx="0.75" fill="#26303E"/>
+                            <path d="M114.001 1L118.001 5L114.001 9" stroke="#26303E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="number">
+                        <h1>03</h1>
+                    </div>
+                </div>
+                <div class="texts">
+                    <h1>Оплата аванса</h1>
+                    <p>Частичная предоплата по договору вносится в течение 3 дней после подписания</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top">
+                    <div class="square-on-corner"></div>
+                    <div class="icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" rx="30" fill="#2F7DFB"/>
+                            <path d="M21.25 25.6433C21.25 21.1459 25.1675 17.5 30 17.5C34.8325 17.5 38.75 21.1459 38.75 25.6433C38.75 30.1055 35.9573 35.3124 31.6001 37.1744C30.5843 37.6085 29.4157 37.6085 28.3999 37.1744C24.0427 35.3124 21.25 30.1055 21.25 25.6433Z" stroke="white" stroke-width="1.5"/>
+                            <path d="M32.5 26.25C32.5 27.6307 31.3807 28.75 30 28.75C28.6193 28.75 27.5 27.6307 27.5 26.25C27.5 24.8693 28.6193 23.75 30 23.75C31.3807 23.75 32.5 24.8693 32.5 26.25Z" stroke="white" stroke-width="1.5"/>
+                            <path d="M41.2007 34.375C42.0324 35.1281 42.5 35.977 42.5 36.875C42.5 39.9816 36.9036 42.5 30 42.5C23.0964 42.5 17.5 39.9816 17.5 36.875C17.5 35.977 17.9676 35.1281 18.7993 34.375" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="arrow">
+                        <svg width="119" height="10" viewBox="0 0 119 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00146484" y="4.25" width="118" height="1.5" rx="0.75" fill="#26303E"/>
+                            <path d="M114.001 1L118.001 5L114.001 9" stroke="#26303E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="number">
+                        <h1>04</h1>
+                    </div>
+                </div>
+                <div class="texts">
+                    <h1>Сбор документов</h1>
+                    <p>Мы предоставляем необходимый список документов для подачи в ЦОН. В случае необходимости поможем восстановить недостающие документы</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top">
+                    <div class="square-on-corner"></div>
+                    <div class="icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00195312" width="60" height="60" rx="30" fill="#2F7DFB"/>
+                            <path d="M22.502 27.5H27.502" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M41.0436 28.75H37.7904C35.56 28.75 33.752 30.4289 33.752 32.5C33.752 34.5711 35.56 36.25 37.7904 36.25H41.0436C41.1478 36.25 41.1999 36.25 41.2438 36.2473C41.9179 36.2063 42.4549 35.7077 42.4991 35.0818C42.502 35.0409 42.502 34.9926 42.502 34.8958V30.1042C42.502 30.0074 42.502 29.9591 42.4991 29.9182C42.4549 29.2923 41.9179 28.7937 41.2438 28.7527C41.1999 28.75 41.1478 28.75 41.0436 28.75Z" stroke="white" stroke-width="1.5"/>
+                            <path d="M41.2082 28.75C41.1111 26.4096 40.7977 24.9747 39.7875 23.9645C38.323 22.5 35.966 22.5 31.252 22.5H27.502C22.7879 22.5 20.4309 22.5 18.9664 23.9645C17.502 25.4289 17.502 27.786 17.502 32.5C17.502 37.214 17.502 39.5711 18.9664 41.0355C20.4309 42.5 22.7879 42.5 27.502 42.5H31.252C35.966 42.5 38.323 42.5 39.7875 41.0355C40.7977 40.0253 41.1111 38.5904 41.2082 36.25" stroke="white" stroke-width="1.5"/>
+                            <path d="M22.502 22.5L27.1713 19.4039C28.4862 18.532 30.2677 18.532 31.5826 19.4039L36.252 22.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M37.4903 32.5H37.5015" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="arrow">
+                        <svg width="119" height="10" viewBox="0 0 119 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00146484" y="4.25" width="118" height="1.5" rx="0.75" fill="#26303E"/>
+                            <path d="M114.001 1L118.001 5L114.001 9" stroke="#26303E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="number">
+                        <h1>05</h1>
+                    </div>
+                </div>
+                <div class="texts">
+                    <h1>Подача документов</h1>
+                    <p>Первый прилет в Бишкек на 1-2 рабочих дня, встреча в аэропорту, подача документов в ЦОН, внесение второй части оплаты после подачи</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top">
+                    <div class="square-on-corner"></div>
+                    <div class="icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00195312" width="60" height="60" rx="30" fill="#2F7DFB"/>
+                            <path d="M20.002 22.5V38.75C20.002 40.8211 21.6809 42.5 23.752 42.5H36.252C38.323 42.5 40.002 40.8211 40.002 38.75V26.25C40.002 24.1789 38.323 22.5 36.252 22.5H20.002ZM20.002 22.5V21.25" stroke="white" stroke-width="1.5"/>
+                            <circle cx="30.002" cy="31.25" r="3.75" stroke="white" stroke-width="1.5"/>
+                            <path d="M37.502 22.5V23.25H38.252V22.5H37.502ZM34.6484 17.9077L34.5423 17.1652L34.5423 17.1652L34.6484 17.9077ZM21.1514 19.8358L21.0454 19.0934L21.0454 19.0934L21.1514 19.8358ZM21.3408 23.25H37.502V21.75H21.3408V23.25ZM38.252 22.5V20.3825H36.752V22.5H38.252ZM34.5423 17.1652L21.0454 19.0934L21.2575 20.5783L34.7545 18.6501L34.5423 17.1652ZM21.0454 19.0934C20.0163 19.2404 19.252 20.1217 19.252 21.1612H20.752C20.752 20.8682 20.9674 20.6197 21.2575 20.5783L21.0454 19.0934ZM38.252 20.3825C38.252 18.4048 36.5002 16.8855 34.5423 17.1652L34.7545 18.6501C35.8087 18.4995 36.752 19.3176 36.752 20.3825H38.252ZM21.3408 21.75C21.0156 21.75 20.752 21.4864 20.752 21.1612H19.252C19.252 22.3148 20.1872 23.25 21.3408 23.25V21.75Z" fill="white"/>
+                            <path d="M27.502 38.75H32.502" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="arrow">
+                        <svg width="119" height="10" viewBox="0 0 119 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00146484" y="4.25" width="118" height="1.5" rx="0.75" fill="#26303E"/>
+                            <path d="M114.001 1L118.001 5L114.001 9" stroke="#26303E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="number">
+                        <h1>06</h1>
+                    </div>
+                </div>
+                <div class="texts">
+                    <h1>Указ президента</h1>
+                    <p>Каждые 3-4 месяца после рассмотрения на комиссии выходит указ президента Кыргызской Республики о принятии в гражданство</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top">
+                    <div class="square-on-corner"></div>
+                    <div class="icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00195312" width="60" height="60" rx="30" fill="#2F7DFB"/>
+                            <path d="M20.002 22.5V38.75C20.002 40.8211 21.6809 42.5 23.752 42.5H36.252C38.323 42.5 40.002 40.8211 40.002 38.75V26.25C40.002 24.1789 38.323 22.5 36.252 22.5H20.002ZM20.002 22.5V21.25" stroke="white" stroke-width="1.5"/>
+                            <circle cx="30.002" cy="31.25" r="3.75" stroke="white" stroke-width="1.5"/>
+                            <path d="M37.502 22.5V23.25H38.252V22.5H37.502ZM34.6484 17.9077L34.5423 17.1652L34.5423 17.1652L34.6484 17.9077ZM21.1514 19.8358L21.0454 19.0934L21.0454 19.0934L21.1514 19.8358ZM21.3408 23.25H37.502V21.75H21.3408V23.25ZM38.252 22.5V20.3825H36.752V22.5H38.252ZM34.5423 17.1652L21.0454 19.0934L21.2575 20.5783L34.7545 18.6501L34.5423 17.1652ZM21.0454 19.0934C20.0163 19.2404 19.252 20.1217 19.252 21.1612H20.752C20.752 20.8682 20.9674 20.6197 21.2575 20.5783L21.0454 19.0934ZM38.252 20.3825C38.252 18.4048 36.5002 16.8855 34.5423 17.1652L34.7545 18.6501C35.8087 18.4995 36.752 19.3176 36.752 20.3825H38.252ZM21.3408 21.75C21.0156 21.75 20.752 21.4864 20.752 21.1612H19.252C19.252 22.3148 20.1872 23.25 21.3408 23.25V21.75Z" fill="white"/>
+                            <path d="M27.502 38.75H32.502" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="arrow">
+                        <svg width="119" height="10" viewBox="0 0 119 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.00146484" y="4.25" width="118" height="1.5" rx="0.75" fill="#26303E"/>
+                            <path d="M114.001 1L118.001 5L114.001 9" stroke="#26303E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="number">
+                        <h1>07</h1>
+                    </div>
+                </div>
+                <div class="texts">
+                    <h1>Получение паспорта</h1>
+                    <p>Второй визит в Кыргызстан на 1-2 рабочих дня, получение внутренней ID карты и загранпаспорта по запросу</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-button-next-cont">
+            <svg class="swiper-button-next" style="scale: 2;" width="54" height="80" viewBox="0 0 12 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.52677 1.31724C1.27445 0.68629 1.73913 0 2.41867 0C2.81148 0 3.16471 0.23917 3.31056 0.603897L12.41 23.3579C12.7889 24.3055 12.7913 25.3621 12.4167 26.3114L3.30941 49.3909C3.16438 49.7585 2.8094 50 2.41427 50C1.73538 50 1.26993 49.316 1.51912 48.6845L10.3477 26.3114C10.7223 25.3621 10.7199 24.3055 10.3409 23.3579L1.52677 1.31724Z" fill="#2F7DFB"/>
+                <path d="M0.389381 6.98667C0.202469 6.51304 0.551551 6 1.06072 6V6C1.35706 6 1.62328 6.18114 1.73206 6.45679L8.42436 23.4147C8.79441 24.3524 8.79677 25.3952 8.43098 26.3346L1.73118 43.5393C1.62302 43.8171 1.35551 44 1.05745 44V44C0.54877 44 0.199133 43.4886 0.383719 43.0146L6.87918 26.3346C7.24498 25.3952 7.24261 24.3524 6.87257 23.4147L0.389381 6.98667Z" fill="#2F7DFB"/>
+            </svg>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11.2.6/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 10,
+            loop: true,
+            speed: 300,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+            },
+
+            breakpoints: {
+            // when window width is >= 320px
+            200: {
+                spaceBetween: 10,
+                slidesPerView: 1.18,
+            },
+            // when window width is >= 480px
+            680: {
+                spaceBetween: 20,
+                slidesPerView: 2.18,
+            },
+            // when window width is >= 640px
+            880: {
+                spaceBetween: 30,
+                slidesPerView: 3.18,
+
+            }
+        }});
+    });
+</script>
+</body>
+</html>

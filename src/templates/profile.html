@@ -1,0 +1,434 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+<script>
+    function change_size_1() {
+        const sexyAdvert = document.querySelector(".sexy-advert");
+        sexyAdvert.classList.add("resize-advert")
+        setTimeout(() => sexyAdvert.classList.remove("resize-advert"), 251)
+        window.location.href="https://t.me/mary_taroeasy"
+    }
+
+    async function save_data() {
+        let tg_id = 0
+        try {
+            tg_id = tg_.initDataUnsafe.user.id
+        } catch {
+            tg_id = "{{ tg_id }}"
+        }
+        console.log("tg_id:", tg_id)
+        let formData = new FormData();
+        formData.append("tg_id", tg_id);
+        formData.append("paul", document.getElementById("paul").value);
+        formData.append("device", document.getElementById("device").value);
+        await fetch("/profile/create_data", {
+            method: "POST",
+            body: formData,
+        })
+        window.location.href=`/main_menu/${tg_id}`
+    }
+</script>
+{% endblock %}
+
+
+{% block content %}
+<div id="particle-container"></div>
+<div class="start-gray-phone">
+    <div class="start-black-phone-gradient-top"></div>
+    <div class="text-on-page-start">
+        <h3 class="h3_sb">Пожалуйста, зарегистрируйтесь для улучшения нашего сервиса</h3>
+
+        <div class="user-data">
+            <div class="img">
+                <img class="user-img" src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/avatar_123123.png" alt="" width="80" height="80">
+                <h3 class="username">{{ username }}</h3>
+            </div>
+            <div class="input-data">
+                <input class="name input_data" type="text" placeholder="Имя" value="{{ name }}">
+                <select class="paul input_data" type="paul" id="paul">
+                    <option value="choice_paul">{{ choice_paul.lower() }}</option>
+                    <option value="женский">Женский</option>
+                    <option value="мужской">Мужской</option>
+                </select>
+                <select class="device input_data" type="device" id="device">
+                    <option value="choice_device">{{ choice_device.lower() }}</option>
+                    <option value="ios">ios</option>
+                    <option value="android">android</option>
+                    <option value="pc">pc</option>
+                </select>
+            </div>
+            <button class="save-data" onclick="save_data()">Сохранить</button>
+            <p class="p_sb">Спасибо, что доверяете нам, эти данные мы используем только для улучшения нашего WEB-приложения</p>
+        </div>
+
+        <div class="sexy-advert" onclick="change_size_1()">
+            <div class="photo-advert-wrapper">
+                <img class="photo-advert" src="https://7bdd6e9d-5639-4742-b439-36560b2a5ee9.selstorage.ru/Taro%20Easy%20bratz.jpg" alt="">
+            </div>
+            <div class="text-advert-wrapper">
+                <div class="text-advert">
+                    <div class="top-text-advert">
+                        <h3 class="text-advert-h3">Здесь могла быть Ваша реклама</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<style>
+    /* Particle container. */
+    #particle-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        overflow-x: hidden;
+    }
+    .start-gray-phone {
+        width: 100vw;
+        height: 130vh;
+        margin-top: -10px;
+        background-size: 80px 80px;
+        background-image: repeating-linear-gradient(0deg, #10102b, #10102b 1px, transparent 1px, transparent 40px),repeating-linear-gradient(-90deg,#10102b, #10102b 1px, transparent 1px, transparent 80px);
+        background-color: #07091c;
+    }
+    .stars-bg {
+        position: absolute;
+        z-index: 1;
+        left: -500px;
+        top: -200px;
+        animation: scalable-bg-stars 60s ease infinite;
+    }
+    @keyframes scalable-bg-stars {
+        0% {
+            scale: 1;
+            top: -200px;
+        }
+        50% {
+            top: -250px;
+            scale: .5
+        }
+        100% {
+            scale: 1;
+        }
+    }
+    .start-black-phone-gradient-top {
+        background: linear-gradient(#000000, transparent);
+        width: 100vw;
+        height: 200px;
+        position: absolute;
+        z-index: 1;
+        opacity: .6;
+    }
+
+    .text-on-page-start {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 20px;
+        gap: 10px;
+
+    }
+    .h3_sb {
+        z-index: 2;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        width: 80%;
+        margin-top: 20px;
+        text-align: left;
+        text-shadow: rgba(255, 255, 255, .6) 0px 0px 20px;
+        padding: 10px 0;
+    }
+
+    /* Регистрация */
+    .user-data {
+        background-color: #fff;
+        width: 80vw;
+        min-height: 50vh;
+        border-radius: 16px;
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, .3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        z-index: 1;
+        padding: 20px 0;
+    }
+    .user-img {
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto;
+    }
+    .username {
+        color: #606060;
+        margin: 0 0 20px 0;
+        text-align: center;
+    }
+    .input-data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    .input_data {
+        height: 44px;
+        width: 65vw;
+        outline: none;
+        border-radius: 10px;
+        background-color: #F2F2F7;
+        border: 2px solid #C3CBD1;
+        text-indent: 5px;
+        font-size: 16px;
+        color: #727272;
+    }
+    .name {
+        text-indent: 10px;
+    }
+    .p_sb {
+        margin: 30px 0 0 0;
+        z-index: 2;
+        color: #A19E9E;
+        font-size: 14px;
+        font-weight: 500;
+        width: 90%;
+        margin-bottom: 20px;
+        text-align: left;
+        line-height: 16px;
+        padding-bottom: -20px;
+    }
+
+    .save-data {
+        margin-top: 20px;
+        background-color: #758bff;
+        width: 40vw;
+        height: 40px;
+        outline: none;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    
+    /* реклама */
+    .sexy-advert {
+        position: relative;
+        z-index: 2;
+        display: block;
+
+        width: 80vw;
+        height: 70px;
+
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+
+
+        /* Эффект размытия */
+        backdrop-filter: blur(4px);
+        /* -webkit-backdrop-filter: blur(10px); */
+
+        box-shadow:
+        /* Нижний и правый эффект глубины */
+        inset -0.75px -0.5px rgba(255, 255, 255, 0.1),
+        /* Верхний и левый эффект глубины */
+        inset +0.75px +0.5px rgba(255, 255, 255, 0.025),
+        /* Shadow effect */
+        3px 2px 10px rgba(0, 0, 0, 0.25),
+        /* Короткий подповерхностный эффект */
+        inset 0px 0px 10px 5px rgba(255, 255, 255, 0.025),
+        /* Длинный подповерхностный эффект */
+        inset 0px 0px 40px 5px rgba(255, 255, 255, 0.025);
+
+        /* Скругляем углы */
+        border-radius: 15px;
+
+        /* Скрываем углы заголовка */
+        overflow: hidden;
+
+        background-color: #ffffff40;
+
+        z-index: 4;
+    }
+    .photo-advert {
+        width: 50px;
+        height: 50px;
+        background-color: #D9D9D9;
+        border-radius: 12px;
+        margin-left: 10px;
+        object-fit: cover;
+    }
+    .top-text-advert {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+    }
+    .text-advert-h3 {
+        font-size: 14px;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .text-advert-link {
+        margin-top: 20px;
+        color: #878787;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .text-advert-descr {
+        color: #1E88E9;
+    }
+    .resize-advert {
+        animation: resize-advert-anim 250ms ease-in-out;
+    }
+    @keyframes resize-advert-anim {
+        0% {scale: 1;}
+        30% {scale: 0.97;}
+        100% {scale: 1;}
+    }
+</style>
+<script>
+    async function onBackButtonPressed() {
+        let tg_ = window.Telegram.WebApp; //получаем объект webapp телеграма
+        window.location.href=`/main_menu/${tg_.initDataUnsafe.user.id}`
+    }
+    const backButton = window.Telegram.WebApp.BackButton;
+    backButton.show();
+    backButton.onClick(() => {
+        onBackButtonPressed();
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+    /* ---- particles.js config ---- */
+
+    particlesJS("particle-container", {
+    "particles": {
+        "number": {
+        "value": 50,
+        "density": {
+            "enable": true,
+            "value_area": 800
+        }
+        },
+        "color": {
+            "value": ["#ffffff"]
+        },
+        "shape": {
+        "type": "circle",
+        "stroke": {
+            "width": 0,
+            "color": "#000000"
+        },
+        "polygon": {
+            "nb_sides": 5
+        },
+        "image": {
+            "src": "img/github.svg",
+            "width": 100,
+            "height": 100
+        }
+        },
+        "opacity": {
+        "value": 0.5,
+        "random": false,
+        "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+        }
+        },
+        "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+                "enable": false,
+                "speed": 1,
+                "size_min": 0.1,
+                "sync": false
+            }
+        },
+        "line_linked": {
+            "enable": true,
+            "distance": 50,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 1,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+        "onhover": {
+            "enable": false,
+            "mode": "repulse"
+        },
+        "onclick": {
+            "enable": true,
+            "mode": "push"
+        },
+        "resize": true
+        },
+        "modes": {
+        "grab": {
+            "distance": 400,
+            "line_linked": {
+            "opacity": 1
+            }
+        },
+        "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+        },
+        "repulse": {
+            "distance": 200,
+            "duration": 0.4
+        },
+        "push": {
+            "particles_nb": 4
+        },
+        "remove": {
+            "particles_nb": 2
+        }
+        }
+    },
+    "retina_detect": true
+    });
+</script>
+
+{% endblock %}
